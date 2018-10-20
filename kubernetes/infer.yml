@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aci-inference
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aci-inference
+  template:
+    metadata:
+      labels:
+        app: aci-inference
+    spec:
+      containers:
+      - name: aci-inference
+        image: inklin/infer 
+        env:
+        - name: SERVICEBUS_NAMESPACE
+          valueFrom:
+            secretKeyRef:
+              name: infer
+              key: SERVICEBUS_NAMESPACE
+
+        - name: SERVICEBUS_ACCESSKEY_NAME
+          valueFrom:
+            secretKeyRef:
+              name: infer
+              key: SERVICEBUS_ACCESSKEY_NAME
+
+        - name: SERVICEBUS_ACCESSKEY
+          valueFrom:
+            secretKeyRef:
+              name: infer
+              key: SERVICEBUS_ACCESSKEY
+
+        - name: STORAGE_ACCOUNT
+          valueFrom:
+            secretKeyRef:
+              name: infer
+              key: STORAGE_ACCOUNT
+
+        - name: STORAGE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: infer
+              key: STORAGE_KEY
+        
+        - name: MONGODB
+          valueFrom:
+            secretKeyRef:
+              name: infer
+              key: MONGODB
+        
+        resources:
+          limits:
+            cpu: 2    
+      nodeSelector:
+        kubernetes.io/hostname: virtual-kubelet-virtual-kubelet-linux-eastus
+      tolerations:
+      - key: virtual-kubelet.io/provider
+        operator: Equal
+        value: azure
+        effect: NoSchedule
+
