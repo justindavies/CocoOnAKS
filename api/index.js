@@ -215,4 +215,4 @@ app.get('/api/coco/images/:lastObject', function (req, res) {
 
 const PORT = process.env.PORT || 7071;
 
-app.listen(PORT, () => console.log(`API listening on port ${PORT}!`))
+app.listen(PORT, () => console.log(`API listening on port ${PORT}!`))   

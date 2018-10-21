@@ -55,7 +55,7 @@ class App extends Component {
     clearInterval(this.state.dataTimer)
 
 
-    const url = `http://localhost:7071/api/coco/vis/${this.state.lastObject}`
+    const url = `${process.env.REACT_APP_API_SERVER}/api/coco/vis/${this.state.lastObject}`
     console.log(url);
     fetch(url).then(res => res.json()).then(data => {
       // if (data.nodes.length > 0) {
@@ -85,7 +85,7 @@ class App extends Component {
 
     clearInterval(this.state.agentsTimer)
 
-    const url = `http://localhost:7071/api/coco/agents`
+    const url = `${process.env.REACT_APP_API_SERVER}/api/coco/agents`
     fetch(url).then(res => res.json()).then(data => {
       this.setState({ agents: data.agents })
       // this.state.network.fit({ animation: true })
@@ -102,7 +102,7 @@ class App extends Component {
 
     clearInterval(this.state.costTimer)
 
-    const url = `http://localhost:7071/api/coco/cost`
+    const url = `${process.env.REACT_APP_API_SERVER}/api/coco/cost`
     fetch(url).then(res => res.json()).then(data => {
       this.setState({ cost: data.cost })
       const costTimer = setInterval(() => {
@@ -117,7 +117,7 @@ class App extends Component {
 
     if (this.state.lastObject !== "") {
       clearInterval(this.state.imagesTimer)
-      const url = `http://localhost:7071/api/coco/images/${this.state.lastObject}`
+      const url = `${process.env.REACT_APP_API_SERVER}/api/coco/images/${this.state.lastObject}`
       fetch(url).then(res => res.json()).then(data => {
         this.setState({ images: data })
 
@@ -133,7 +133,7 @@ class App extends Component {
     console.log(`Getting Stats, clearning ${this.state.statsTimer}`);
     clearInterval(this.state.statsTimer)
 
-    const url = `http://localhost:7071/api/coco/stats`
+    const url = `${process.env.REACT_APP_API_SERVER}/api/coco/stats`
     fetch(url).then(res => res.json()).then(data => {
       this.addData(data.tpm)
 
