@@ -226,7 +226,7 @@ class App extends Component {
           <Cost cost={this.state.cost} />
         </div>
         <div className="volume">
-          <VolumeChart data={this.state.volume_data} options={this.state.volume_options} shouldRedraw={this.state.shouldRedraw} />
+        <VolumeChart data={this.state.volume_data} options={this.state.volume_options} shouldRedraw={this.state.shouldRedraw} />
         </div>
         <div className="graph">
           <Graph getNetwork={network => this.setState({ network })} graph={this.state.data} options={options} />
