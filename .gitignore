@@ -5,3 +5,5 @@ api/node_modules
 kubernetes/infer_secrets_prod.yml
 */yarn.lock
 utils/envs.sh
+*/*tfstate*
+terraform/.terraform
