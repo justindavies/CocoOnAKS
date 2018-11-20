@@ -4,4 +4,4 @@ keras
 azure.servicebus
 pymongo
 azure.storage.blob
-PIL
+Pillow

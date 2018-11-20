@@ -1,5 +1,5 @@
 resource "azurerm_storage_account" "cocoonaks" {
-  name                     = "${var.prefix}-cocoonaks"
+  name                     = "${var.prefix}cocoonaks"
   resource_group_name      = "${azurerm_resource_group.cocoonaks.name}"
   location                 = "${azurerm_resource_group.cocoonaks.location}"
   account_tier             = "Standard"
